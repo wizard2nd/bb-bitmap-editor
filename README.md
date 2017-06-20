@@ -1,11 +1,8 @@
 # Exercise
 
-Produce a Ruby 2.3 program that simulates a basic interactive bitmap editor.
+Produce a Ruby 2+ program that simulates a basic interactive bitmap editor.
 Bitmaps are represented as an M x N matrix of pixels with each element
 representing a colour.
-
-# Development Assumptions
-No edge cases have been considered in solving this problem. Nevertheless, edge cases have been identified and listed as pending tests, and would be the topic of a conversation with the user.
 
 # Program input
 
@@ -54,11 +51,5 @@ OWOOO
 OWOOO
 ```
 
-When implementing this program focus on quality and best practices. DO NOT RUSH! It's not a speed test. Make sure the program works with odd input and doesn't crash.
+When implementing this program focus on quality and best practices. Make sure the program works with odd input and doesn't crash.
 
-# Submission
-
-We've created a very basic skeleton application you can use as a basis to start from. Feel free to adapt and refactor it as you see fit but please note that we will be running more complicated commands files against your application with the command `ruby runner.rb test_file_path.txt`
-
-
-Please submit a fully completed answer within the time allowed. Please provide source code and full GIT repository. Please commit often and with good commit messages. That will allow us to see how you've approached the problem. Don't worry about changing things around often
