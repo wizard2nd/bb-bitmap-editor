@@ -12,6 +12,8 @@ class BitmapEditor
       @image.create(width: args[1].to_i, height: args[2].to_i)
     when 'C'
       @image.clear
+    when 'L'
+      @image.color_pixel(x: args[1].to_i, y: args[2].to_i, color: args[3])
     end
   end
 end

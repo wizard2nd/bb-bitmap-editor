@@ -44,4 +44,13 @@ describe BitmapEditor do
   describe 'L 0 0 B' do
     it 'does nothing'
   end
+
+  describe 'L 1 1 B' do
+    it 'Colours fist pixel in row and first pixel in column to black' do
+      image = double :image
+      expect(image).to receive(:color_pixel).with(x: 1, y: 1, color: 'B')
+
+      BitmapEditor.new(image).run('L 1 1 B')
+    end
+  end
 end
