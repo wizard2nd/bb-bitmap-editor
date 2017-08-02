@@ -14,4 +14,13 @@ describe BitmapEditor do
       BitmapEditor.new(image).run('I 1 1')
     end
   end
+
+  describe 'I 2 3' do
+    it 'creates and 2 x 3 image' do
+      image = double :image
+      expect(image).to receive(:create).with(width: 2, height: 3)
+
+      BitmapEditor.new(image).run('I 2 3')
+    end
+  end
 end
