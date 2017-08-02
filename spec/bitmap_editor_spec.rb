@@ -27,4 +27,8 @@ describe BitmapEditor do
   describe 'I 251 251' do
     it 'creates 250 x 250 image?'
   end
+
+  describe 'I -1 -1' do
+    it 'creates nothing?'
+  end
 end
