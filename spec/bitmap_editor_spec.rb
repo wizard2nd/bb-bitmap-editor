@@ -40,4 +40,8 @@ describe BitmapEditor do
       BitmapEditor.new(image).run('C')
     end
   end
+
+  describe 'L 0 0 B' do
+    it 'does nothing'
+  end
 end
