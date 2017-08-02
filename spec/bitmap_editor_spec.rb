@@ -31,4 +31,13 @@ describe BitmapEditor do
   describe 'I -1 -1' do
     it 'creates nothing?'
   end
+
+  describe 'C' do
+    it 'clears image' do
+      image = double :image
+      expect(image).to receive(:clear)
+
+      BitmapEditor.new(image).run('C')
+    end
+  end
 end

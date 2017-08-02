@@ -5,6 +5,11 @@ class BitmapEditor
 
   def run(command)
     args = command.split(' ')
-    @image.create(width: args[1].to_i, height: args[2].to_i)
+    case args[0]
+    when 'I'
+      @image.create(width: args[1].to_i, height: args[2].to_i)
+    when 'C'
+      @image.clear
+    end
   end
 end
