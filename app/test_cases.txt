@@ -1,6 +1,6 @@
 1) I 0 0
 2) I 1 1
 3) I 2 3
-4) I 250 250
+4) I 250 250 // not need to test; it doesn't make us to write a new code
 5) I 251 251
 6) I -1 -1

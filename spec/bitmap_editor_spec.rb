@@ -23,4 +23,8 @@ describe BitmapEditor do
       BitmapEditor.new(image).run('I 2 3')
     end
   end
+
+  describe 'I 251 251' do
+    it 'creates 250 x 250 image?'
+  end
 end
