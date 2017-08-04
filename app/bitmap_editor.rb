@@ -4,7 +4,7 @@ class BitmapEditor
   end
 
   def run(command)
-    args = command.split(' ')
+    args = command.upcase.split(' ')
     type_of_command = args[0]
 
     case type_of_command
