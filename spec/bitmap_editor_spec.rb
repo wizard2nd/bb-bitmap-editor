@@ -62,4 +62,14 @@ describe BitmapEditor do
       run_command
     end
   end
+
+  describe 'L 5 9 B' do
+    let(:command) { 'L 5 9 B' }
+
+    it 'Colours fist pixel in row and first pixel in column to black' do
+      expect(image).to receive(:color_pixel).with(x: 5, y: 9, color: 'B')
+
+      run_command
+    end
+  end
 end
