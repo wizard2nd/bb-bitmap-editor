@@ -102,4 +102,28 @@ describe BitmapEditor do
       run_command
     end
   end
+
+  describe 'V -1 3 5 G' do
+    it 'Colors vertical line on first column with green color?'
+  end
+
+  describe 'V 1 -3 -8 B' do
+    it 'Colors vertical line on first column between third and 8th pixel with black color?'
+  end
+
+  describe 'V 0 4 8 R' do
+    it 'Colors vertical line on first column between 4th and 8th pixel with red color?'
+  end
+
+  describe 'V 0 0 0' do
+    it 'Colors what?'
+  end
+
+  describe 'V 251 2 6 B' do
+    it 'Colors vertical line on last column between pixels 2 and 6 with black color?'
+  end
+
+  describe 'V -2 -3 -10 B' do
+    it 'Colors vertical line on column 2 between pixels 3 and 10 with black color?'
+  end
 end
