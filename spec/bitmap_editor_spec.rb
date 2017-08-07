@@ -92,4 +92,14 @@ describe BitmapEditor do
       run_command
     end
   end
+
+  describe 'V 3 5 8 Y' do
+    let(:command) { 'V 3 5 8 Y' }
+
+    it 'Colors pixels in vertical line in third column between 5th and 8th row' do
+      expect(image).to receive(:color_vertical_line).with(x: 3, y1: 5, y2: 8, color: 'Y')
+
+      run_command
+    end
+  end
 end
