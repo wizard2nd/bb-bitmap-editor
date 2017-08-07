@@ -126,4 +126,14 @@ describe BitmapEditor do
   describe 'V -2 -3 -10 B' do
     it 'Colors vertical line on column 2 between pixels 3 and 10 with black color?'
   end
+
+  describe 'H 3 5 8 Y' do
+    let(:command) { 'H 3 5 8 Y' }
+
+    it 'Colors pixels in horizontal line in third row between 5th and 8th pixel in row' do
+      expect(image).to receive(:color_horizontal_line).with(y: 3, x1: 5, x2: 8, color: 'Y')
+
+      run_command
+    end
+  end
 end
