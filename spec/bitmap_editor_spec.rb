@@ -136,4 +136,8 @@ describe BitmapEditor do
       run_command
     end
   end
+
+  describe 'H 0 4 8 R' do
+    it 'Colors first horizontal line between 4th and 8th pixel with red color'
+  end
 end
