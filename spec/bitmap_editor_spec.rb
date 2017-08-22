@@ -140,4 +140,14 @@ describe BitmapEditor do
   describe 'H 0 4 8 R' do
     it 'Colors first horizontal line between 4th and 8th pixel with red color'
   end
+
+  describe 'S' do
+    let(:command) { 'S' }
+
+    it 'Prints out content of image' do
+      expect(image).to receive(:show)
+
+      run_command
+    end
+  end
 end
