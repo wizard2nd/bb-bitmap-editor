@@ -26,3 +26,7 @@
 
 17) H 3 5 8 Y
 19) H 0 4 8 R
+
+Image class test cases
+
+1) create method
