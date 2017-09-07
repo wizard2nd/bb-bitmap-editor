@@ -1,17 +1,19 @@
 class BitmapImage
 
+  attr_reader :pixels
+
   WHITE_COLOR = 'O'.freeze
 
   def create(width:, height:)
-    @image = Array.new(height) { Array.new(width, WHITE_COLOR) }
+    @pixels = Array.new(height) { Array.new(width, WHITE_COLOR) }
     self
   end
 
   def width
-    @image.first.size
+    @pixels.first.size
   end
 
   def height
-    @image.size
+    @pixels.size
   end
 end

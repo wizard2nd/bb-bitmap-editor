@@ -15,6 +15,15 @@ describe BitmapImage do
       it 'creates image of height 1' do
         expect(image.create(width: 4, height: 1).height).to eq 1
       end
+
+      it 'creates an image with white background' do
+        pixels = image.create(width: 2, height: 2).pixels
+        pixels.each do |row|
+          row.each do |pixel|
+            expect(pixel).to eq 'O'
+          end
+        end
+      end
     end
   end
 end
