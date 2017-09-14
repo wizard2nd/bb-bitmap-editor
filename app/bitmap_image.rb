@@ -20,4 +20,8 @@ class BitmapImage
   def color_pixel(x:, y:, color:)
     pixels[y - 1][x - 1] = color
   end
+
+  def clear
+    create(width: width, height: height)
+  end
 end

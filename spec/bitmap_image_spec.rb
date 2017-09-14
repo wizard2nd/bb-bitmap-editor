@@ -45,5 +45,21 @@ describe BitmapImage do
         expect(image.pixels[2][1]).to eq 'B'
       end
     end
+
+    describe '#clear' do
+      let(:width) { 2 }
+      let(:height) { 2 }
+
+      let(:clear_image) { [ %w(O O), %w(O O) ] }
+      before do
+        image.create(width: width, height: height)
+        image.color_pixel(x: 1, y: 2, color: 'R')
+      end
+
+      it 'clears the image by setting white background' do
+        image.clear
+        expect(image.pixels).to eq clear_image
+      end
+    end
   end
 end
