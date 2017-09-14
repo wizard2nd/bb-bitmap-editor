@@ -25,5 +25,15 @@ describe BitmapImage do
         end
       end
     end
+
+    describe '#color_pixel' do
+
+      before { image.create(width: 4, height: 3) }
+
+      it 'paint pixel on (1,2) with color R' do
+        image.color_pixel(x: 1, y: 2, color: 'R')
+        expect(image.pixels[1][0]).to eq 'R'
+      end
+    end
   end
 end

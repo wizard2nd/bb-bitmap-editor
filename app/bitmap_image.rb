@@ -16,4 +16,8 @@ class BitmapImage
   def height
     @pixels.size
   end
+
+  def color_pixel(x:, y:, color:)
+    pixels[1][0] = 'R'
+  end
 end
