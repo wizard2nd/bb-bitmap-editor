@@ -39,6 +39,11 @@ describe BitmapImage do
         image.color_pixel(x: 1, y: 2, color: 'G')
         expect(image.pixels[1][0]).to eq 'G'
       end
+
+      it 'paint pixel on (2,3) with color B' do
+        image.color_pixel(x: 2, y: 3, color: 'B')
+        expect(image.pixels[2][1]).to eq 'B'
+      end
     end
   end
 end

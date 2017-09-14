@@ -18,6 +18,6 @@ class BitmapImage
   end
 
   def color_pixel(x:, y:, color:)
-    pixels[1][0] = color
+    pixels[y - 1][x - 1] = color
   end
 end
