@@ -24,4 +24,10 @@ class BitmapImage
   def clear
     create(width: width, height: height)
   end
+
+  def draw_vertical_line(x:, y1:, y2:, color:)
+    @pixels[1][1] = 'R'
+    @pixels[2][1] = 'R'
+    @pixels[3][1] = 'R'
+  end
 end

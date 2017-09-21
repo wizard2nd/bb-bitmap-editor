@@ -61,5 +61,26 @@ describe BitmapImage do
         expect(image.pixels).to eq clear_image
       end
     end
+
+    describe '#draw_vertical_line' do
+      before do
+        image.create(width: 4, height: 5)
+      end
+
+      it 'draws vertical line in x = 2 column trough rows 2 to 4 with colour R' do
+        image.draw_vertical_line(x: 2, y1: 2, y2: 4, color: 'R')
+        expect(image.pixels[1][1]).to eq 'R'
+        expect(image.pixels[2][1]).to eq 'R'
+        expect(image.pixels[3][1]).to eq 'R'
+      end
+    end
   end
 end
+
+[
+  [0, 0, 0, 0],
+  [0, 'R', 0, 0],
+  [0, 'R', 0, 0],
+  [0, 'R', 0, 0],
+  [0, 0, 0, 0]
+]
