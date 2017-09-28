@@ -80,6 +80,13 @@ describe BitmapImage do
         expect(image.pixels[2][1]).to eq 'B'
         expect(image.pixels[3][1]).to eq 'B'
       end
+
+      it 'draws vertical line in x = 3 column trough rows 2 to 4 with colour B' do
+        image.draw_vertical_line(x: 3, y1: 2, y2: 4, color: 'B')
+        expect(image.pixels[1][2]).to eq 'B'
+        expect(image.pixels[2][2]).to eq 'B'
+        expect(image.pixels[3][2]).to eq 'B'
+      end
     end
   end
 end

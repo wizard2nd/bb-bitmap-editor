@@ -26,8 +26,8 @@ class BitmapImage
   end
 
   def draw_vertical_line(x:, y1:, y2:, color:)
-    @pixels[1][1] = color
-    @pixels[2][1] = color
-    @pixels[3][1] = color
+    @pixels[1][x - 1] = color
+    @pixels[2][x - 1] = color
+    @pixels[3][x - 1] = color
   end
 end
