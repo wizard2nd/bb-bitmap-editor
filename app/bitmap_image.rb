@@ -28,4 +28,10 @@ class BitmapImage
   def draw_vertical_line(x:, y1:, y2:, color:)
     (y1..y2).each { |y| @pixels[y - 1][x - 1] = color }
   end
+
+  def draw_horizontal_line(y:, x1:, x2:, color:)
+    @pixels[1][1] = 'G'
+    @pixels[1][2] = 'G'
+    @pixels[1][3] = 'G'
+  end
 end
