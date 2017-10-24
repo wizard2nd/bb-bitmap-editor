@@ -105,6 +105,14 @@ describe BitmapImage do
         expect(image.pixels[1][2]).to eq 'G'
         expect(image.pixels[1][3]).to eq 'G'
       end
+
+      it 'draws horizontal line on y = 3 row trough 2 to 4 y columns with color G' do
+        image.draw_horizontal_line(y: 3, x1: 2, x2: 4, color: 'G')
+        expect(image.pixels[2][1]).to eq 'G'
+        expect(image.pixels[2][2]).to eq 'G'
+        expect(image.pixels[2][3]).to eq 'G'
+
+      end
     end
   end
 end
