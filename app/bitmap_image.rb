@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class BitmapImage
 
   attr_reader :pixels
@@ -17,8 +19,8 @@ class BitmapImage
     @pixels.size
   end
 
-  def color_pixel(x:, y:, color:)
-    pixels[y - 1][x - 1] = color
+  def color_pixel(color:, point:)
+    pixels[point.y - 1][point.x - 1] = color
   end
 
   def clear
@@ -30,6 +32,9 @@ class BitmapImage
   end
 
   def draw_horizontal_line(y:, x1:, x2:, color:)
-    (x1..x2).each { |x| color_pixel x: x, y: y, color: color }
+    (x1..x2).each do |x|
+      point = OpenStruct.new(x: x, y: y)
+      color_pixel color: color, point: point
+    end
   end
 end

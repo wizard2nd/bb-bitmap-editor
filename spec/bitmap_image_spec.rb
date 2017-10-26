@@ -31,17 +31,20 @@ describe BitmapImage do
       before { image.create(width: 4, height: 3) }
 
       it 'paint pixel on (1,2) with color R' do
-        image.color_pixel(x: 1, y: 2, color: 'R')
+        point = OpenStruct.new(x: 1, y: 2)
+        image.color_pixel(color: 'R', point: point)
         expect(image.pixels[1][0]).to eq 'R'
       end
 
       it 'paint pixel on (1,2) with color G' do
-        image.color_pixel(x: 1, y: 2, color: 'G')
+        point = OpenStruct.new(x: 1, y: 2)
+        image.color_pixel(color: 'G', point: point)
         expect(image.pixels[1][0]).to eq 'G'
       end
 
       it 'paint pixel on (2,3) with color B' do
-        image.color_pixel(x: 2, y: 3, color: 'B')
+        point = OpenStruct.new(x: 2, y: 3)
+        image.color_pixel(color: 'B', point: point)
         expect(image.pixels[2][1]).to eq 'B'
       end
     end
@@ -53,7 +56,8 @@ describe BitmapImage do
       let(:clear_image) { [ %w(O O), %w(O O) ] }
       before do
         image.create(width: width, height: height)
-        image.color_pixel(x: 1, y: 2, color: 'R')
+        point = OpenStruct.new(x: 1, y: 2)
+        image.color_pixel(color: 'R', point: point)
       end
 
       it 'clears the image by setting white background' do
