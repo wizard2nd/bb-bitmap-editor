@@ -1,4 +1,5 @@
 require 'rspec'
+require 'ostruct'
 require_relative '../app/bitmap_editor'
 
 describe BitmapEditor do
@@ -57,7 +58,8 @@ describe BitmapEditor do
     let(:command) { 'L 1 1 B' }
 
     it 'Colours fist pixel in row and first pixel in column to black' do
-      expect(image).to receive(:color_pixel).with(x: 1, y: 1, color: 'B')
+      point = OpenStruct.new(x: 1, y: 1)
+      expect(image).to receive(:color_pixel).with(point: point, color: 'B')
 
       run_command
     end
@@ -67,7 +69,8 @@ describe BitmapEditor do
     let(:command) { 'L 5 9 B' }
 
     it 'Colours 5th pixel in row and 9th pixel in column to black' do
-      expect(image).to receive(:color_pixel).with(x: 5, y: 9, color: 'B')
+      point = OpenStruct.new(x: 5, y: 9)
+      expect(image).to receive(:color_pixel).with(point: point, color: 'B')
 
       run_command
     end
@@ -77,7 +80,8 @@ describe BitmapEditor do
     let(:command) { 'L -1 -3 B' }
 
     it 'Colors fist pixel in row and third pixel in column to black' do
-      expect(image).to receive(:color_pixel).with(x: 1, y: 3, color: 'B')
+      point = OpenStruct.new(x: 1, y: 3)
+      expect(image).to receive(:color_pixel).with(point: point, color: 'B')
 
       run_command
     end
@@ -85,9 +89,9 @@ describe BitmapEditor do
 
   describe 'l 1 3 b' do
     let(:command) { 'l 1 3 b' }
-
     it 'Colors fist pixel in row and third pixel in column to black' do
-      expect(image).to receive(:color_pixel).with(x: 1, y: 3, color: 'B')
+      point = OpenStruct.new(x: 1, y: 3)
+      expect(image).to receive(:color_pixel).with(point: point, color: 'B')
 
       run_command
     end

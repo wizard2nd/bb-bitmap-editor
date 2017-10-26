@@ -6,6 +6,8 @@ class BitmapEditor
   def run(command)
     args = command.upcase.split(' ')
     type_of_command = args[0]
+    point = { x: args[1].to_i.abs, y: args[2].to_i.abs }
+    point = OpenStruct.new(point)
 
     case type_of_command
     when 'I'
@@ -13,7 +15,7 @@ class BitmapEditor
     when 'C'
       @image.clear
     when 'L'
-      @image.color_pixel(x: args[1].to_i.abs, y: args[2].to_i.abs, color: args[3])
+      @image.color_pixel(point: point, color: args[3])
     when 'V'
       @image.color_vertical_line(x: args[1].to_i, y1: args[2].to_i, y2: args[3].to_i, color: args[4])
     when 'H'
