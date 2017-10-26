@@ -27,9 +27,9 @@ class BitmapImage
     create(width: width, height: height)
   end
 
-  def draw_vertical_line(x:, y1:, y2:, color:)
-    (y1..y2).each do |y|
-      point = OpenStruct.new(x: x, y: y)
+  def draw_vertical_line(line:, color:)
+    (line.from..line.to).each do |point_on_line|
+      point = OpenStruct.new(x: line.on, y: point_on_line)
       color_pixel point: point, color: color
     end
   end
