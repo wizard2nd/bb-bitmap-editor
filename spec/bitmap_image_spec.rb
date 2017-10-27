@@ -108,21 +108,24 @@ describe BitmapImage do
       before { image.create(width: 4, height: 5) }
 
       it 'draws horizontal line on y = 2 row trough 2 to 4 y columns with color G' do
-        image.draw_horizontal_line(y: 2, x1: 2, x2: 4, color: 'G')
+        h_line = OpenStruct.new(on: 2, from: 2, to: 4)
+        image.draw_horizontal_line(color: 'G', line: h_line)
         expect(image.pixels[1][1]).to eq 'G'
         expect(image.pixels[1][2]).to eq 'G'
         expect(image.pixels[1][3]).to eq 'G'
       end
 
       it 'draws horizontal line on y = 3 row trough 2 to 4 y columns with color G' do
-        image.draw_horizontal_line(y: 3, x1: 2, x2: 4, color: 'G')
+        h_line = OpenStruct.new(on: 3, from: 2, to: 4)
+        image.draw_horizontal_line(color: 'G', line: h_line)
         expect(image.pixels[2][1]).to eq 'G'
         expect(image.pixels[2][2]).to eq 'G'
         expect(image.pixels[2][3]).to eq 'G'
       end
 
       it 'draws horizontal line on y = 3 row trough 1 to 4 y columns with color B' do
-        image.draw_horizontal_line(y: 3, x1: 1, x2: 4, color: 'B')
+        h_line = OpenStruct.new(on: 3, from: 1, to: 4)
+        image.draw_horizontal_line(color: 'B', line: h_line)
         expect(image.pixels[0][0..-1]).to all eq 'O'
         expect(image.pixels[1][0..-1]).to all eq 'O'
         expect(image.pixels[2][0..-1]).to all eq 'B'
