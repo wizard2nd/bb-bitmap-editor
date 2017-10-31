@@ -27,15 +27,9 @@ class BitmapImage
     create(width: width, height: height)
   end
 
-  def draw_vertical_line(line:, color:)
+  def draw_line(line:, color:)
     line.each do |point|
       color_pixel point: point, color: color
-    end
-  end
-
-  def draw_horizontal_line(line:, color:)
-    line.each do |point|
-      color_pixel color: color, point: point
     end
   end
 end

@@ -66,7 +66,7 @@ describe BitmapImage do
       end
     end
 
-    describe '#draw_vertical_line' do
+    describe '#draw_line' do
       before do
         image.create(width: 4, height: 5)
       end
@@ -78,7 +78,7 @@ describe BitmapImage do
           OpenStruct.new(x: 2, y: 4),
         ]
 
-        image.draw_vertical_line(color: 'R', line: v_line)
+        image.draw_line(color: 'R', line: v_line)
         expect(image.pixels[1][1]).to eq 'R'
         expect(image.pixels[2][1]).to eq 'R'
         expect(image.pixels[3][1]).to eq 'R'
@@ -91,7 +91,7 @@ describe BitmapImage do
           OpenStruct.new(x: 2, y: 4)
         ]
 
-        image.draw_vertical_line(color: 'B', line: v_line)
+        image.draw_line(color: 'B', line: v_line)
         expect(image.pixels[1][1]).to eq 'B'
         expect(image.pixels[2][1]).to eq 'B'
         expect(image.pixels[3][1]).to eq 'B'
@@ -104,7 +104,7 @@ describe BitmapImage do
           OpenStruct.new(x: 3, y: 4)
         ]
 
-        image.draw_vertical_line(color: 'B', line: v_line)
+        image.draw_line(color: 'B', line: v_line)
         expect(image.pixels[1][2]).to eq 'B'
         expect(image.pixels[2][2]).to eq 'B'
         expect(image.pixels[3][2]).to eq 'B'
@@ -117,24 +117,20 @@ describe BitmapImage do
           OpenStruct.new(x: 3, y: 3)
         ]
 
-        image.draw_vertical_line(color: 'B', line: v_line)
+        image.draw_line(color: 'B', line: v_line)
         expect(image.pixels[0][2]).to eq 'B'
         expect(image.pixels[1][2]).to eq 'B'
         expect(image.pixels[2][2]).to eq 'B'
       end
-    end
-
-    describe '#draw_horizontal_line' do
-      before { image.create(width: 4, height: 5) }
 
       it 'draws horizontal line on y = 2 row trough 2 to 4 y columns with color G' do
         h_line = [
-          OpenStruct.new(x: 2, y: 2),
-          OpenStruct.new(x: 3, y: 2),
-          OpenStruct.new(x: 4, y: 2),
+            OpenStruct.new(x: 2, y: 2),
+            OpenStruct.new(x: 3, y: 2),
+            OpenStruct.new(x: 4, y: 2),
         ]
 
-        image.draw_horizontal_line(color: 'G', line: h_line)
+        image.draw_line(color: 'G', line: h_line)
         expect(image.pixels[1][1]).to eq 'G'
         expect(image.pixels[1][2]).to eq 'G'
         expect(image.pixels[1][3]).to eq 'G'
@@ -142,12 +138,12 @@ describe BitmapImage do
 
       it 'draws horizontal line on y = 3 row trough 2 to 4 y columns with color G' do
         h_line = [
-          OpenStruct.new(x: 2, y: 3),
-          OpenStruct.new(x: 3, y: 3),
-          OpenStruct.new(x: 4, y: 3)
+            OpenStruct.new(x: 2, y: 3),
+            OpenStruct.new(x: 3, y: 3),
+            OpenStruct.new(x: 4, y: 3)
         ]
 
-        image.draw_horizontal_line(color: 'G', line: h_line)
+        image.draw_line(color: 'G', line: h_line)
         expect(image.pixels[2][1]).to eq 'G'
         expect(image.pixels[2][2]).to eq 'G'
         expect(image.pixels[2][3]).to eq 'G'
@@ -155,13 +151,13 @@ describe BitmapImage do
 
       it 'draws horizontal line on y = 3 row trough 1 to 4 y columns with color B' do
         h_line = [
-          OpenStruct.new(x: 1, y: 3),
-          OpenStruct.new(x: 2, y: 3),
-          OpenStruct.new(x: 3, y: 3),
-          OpenStruct.new(x: 4, y: 3)
+            OpenStruct.new(x: 1, y: 3),
+            OpenStruct.new(x: 2, y: 3),
+            OpenStruct.new(x: 3, y: 3),
+            OpenStruct.new(x: 4, y: 3)
         ]
 
-        image.draw_horizontal_line(color: 'B', line: h_line)
+        image.draw_line(color: 'B', line: h_line)
         expect(image.pixels[0][0..-1]).to all eq 'O'
         expect(image.pixels[1][0..-1]).to all eq 'O'
         expect(image.pixels[2][0..-1]).to all eq 'B'
