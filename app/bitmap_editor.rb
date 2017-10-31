@@ -22,7 +22,10 @@ class BitmapEditor
       end
       @image.draw_line(line: v_line, color: args[4])
     when 'H'
-      @image.color_horizontal_line(y: args[1].to_i, x1: args[2].to_i, x2: args[3].to_i, color: args[4])
+      h_line = (args[2]..args[3]).each_with_object([]) do |x, line|
+        line << OpenStruct.new(x: x.to_i, y: args[1].to_i)
+      end
+      @image.draw_line(line: h_line, color: args[4])
     when 'S'
       @image.show
     end

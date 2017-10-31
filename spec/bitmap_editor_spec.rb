@@ -141,7 +141,13 @@ describe BitmapEditor do
     let(:command) { 'H 3 5 8 Y' }
 
     it 'Colors pixels in horizontal line in third row between 5th and 8th pixel in row' do
-      expect(image).to receive(:color_horizontal_line).with(y: 3, x1: 5, x2: 8, color: 'Y')
+      h_line = [
+        OpenStruct.new(x: 5, y: 3),
+        OpenStruct.new(x: 6, y: 3),
+        OpenStruct.new(x: 7, y: 3),
+        OpenStruct.new(x: 8, y: 3)
+      ]
+      expect(image).to receive(:draw_line).with(line: h_line, color: 'Y')
 
       run_command
     end
