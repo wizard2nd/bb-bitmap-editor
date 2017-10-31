@@ -17,7 +17,10 @@ class BitmapEditor
       point = OpenStruct.new(point)
       @image.color_pixel(point: point, color: args[3])
     when 'V'
-      @image.color_vertical_line(x: args[1].to_i, y1: args[2].to_i, y2: args[3].to_i, color: args[4])
+      v_line = (args[2]..args[3]).each_with_object([]) do |y, line|
+        line << OpenStruct.new(x: args[1].to_i, y: y.to_i)
+      end
+      @image.draw_line(line: v_line, color: args[4])
     when 'H'
       @image.color_horizontal_line(y: args[1].to_i, x1: args[2].to_i, x2: args[3].to_i, color: args[4])
     when 'S'
