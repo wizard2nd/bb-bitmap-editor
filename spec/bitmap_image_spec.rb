@@ -167,14 +167,12 @@ describe BitmapImage do
   end
 
   describe '#to_s' do
-    before do
-      image.create(width: 2, height: 2)
-    end
+    before { image.create(width: 2, height: 2) }
+
+    let(:expected_string) { "OO\nOO" }
 
     it 'converts image to string' do
-      result_string = image.to_s
-      expected_string = "OO\nOO"
-      expect(result_string).to eq expected_string
+      expect(image.to_s).to eq expected_string
     end
   end
 end
