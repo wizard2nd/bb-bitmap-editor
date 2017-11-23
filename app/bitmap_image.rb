@@ -32,4 +32,9 @@ class BitmapImage
       color_pixel point: point, color: color
     end
   end
+
+  def to_s
+    lines = pixels.each_with_object([]) { |line, str| str << line.join('') }
+    lines.join("\n")
+  end
 end

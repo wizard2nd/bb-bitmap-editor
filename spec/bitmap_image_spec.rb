@@ -2,9 +2,9 @@ require 'rspec'
 require_relative '../app/bitmap_image'
 
 describe BitmapImage do
+  let(:image) { described_class.new }
 
   describe '#create' do
-    let(:image) { described_class.new }
 
     describe 'image 4 by 1' do
 
@@ -163,6 +163,18 @@ describe BitmapImage do
         expect(image.pixels[2][0..-1]).to all eq 'B'
         expect(image.pixels[3][0..-1]).to all eq 'O'
       end
+    end
+  end
+
+  describe '#to_s' do
+    before do
+      image.create(width: 2, height: 2)
+    end
+
+    it 'converts image to string' do
+      result_string = image.to_s
+      expected_string = "OO\nOO"
+      expect(result_string).to eq expected_string
     end
   end
 end
