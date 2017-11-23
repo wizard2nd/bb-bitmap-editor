@@ -165,5 +165,10 @@ describe BitmapEditor do
 
       run_command
     end
+
+    it 'Prints image content to std output' do
+      expect(image).to receive(:to_s).and_return('00')
+      expect{ run_command }.to output("00\n").to_stdout
+    end
   end
 end
