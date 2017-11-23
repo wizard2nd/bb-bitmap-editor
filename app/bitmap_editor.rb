@@ -27,7 +27,7 @@ class BitmapEditor
       end
       @image.draw_line(line: h_line, color: args[4])
     when 'S'
-      @image.show
+      puts @image.to_s
     end
   end
 end

@@ -161,7 +161,7 @@ describe BitmapEditor do
     let(:command) { 'S' }
 
     it 'Prints out content of image' do
-      expect(image).to receive(:show)
+      expect(image).to receive(:to_s)
 
       run_command
     end
