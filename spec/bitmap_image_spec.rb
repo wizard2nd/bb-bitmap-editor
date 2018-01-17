@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative '../app/bitmap_image'
+require 'byebug'
 
 describe BitmapImage do
   let(:image) { described_class.new }
@@ -17,12 +18,9 @@ describe BitmapImage do
       end
 
       it 'creates an image with white background' do
-        pixels = image.create(width: 2, height: 2).pixels
-        pixels.each do |row|
-          row.each do |pixel|
-            expect(pixel).to eq 'O'
-          end
-        end
+        image.create(width: 2, height: 2)
+
+        expect(image.to_s).to eq "OO\nOO"
       end
     end
 
@@ -33,19 +31,22 @@ describe BitmapImage do
       it 'paint pixel on (1,2) with color R' do
         point = OpenStruct.new(x: 1, y: 2)
         image.color_pixel(color: 'R', point: point)
-        expect(image.pixels[1][0]).to eq 'R'
+
+        expect(image.to_s).to eq "OOOO\nROOO\nOOOO"
       end
 
       it 'paint pixel on (1,2) with color G' do
         point = OpenStruct.new(x: 1, y: 2)
         image.color_pixel(color: 'G', point: point)
-        expect(image.pixels[1][0]).to eq 'G'
+
+        expect(image.to_s).to eq "OOOO\nGOOO\nOOOO"
       end
 
       it 'paint pixel on (2,3) with color B' do
         point = OpenStruct.new(x: 2, y: 3)
         image.color_pixel(color: 'B', point: point)
-        expect(image.pixels[2][1]).to eq 'B'
+
+        expect(image.to_s).to eq "OOOO\nOOOO\nOBOO"
       end
     end
 
@@ -61,8 +62,9 @@ describe BitmapImage do
       end
 
       it 'clears the image by setting white background' do
-        image.clear
-        expect(image.pixels).to eq clear_image
+        expect { image.clear }.to(
+          change { image.to_s }.from("OO\nRO").to "OO\nOO"
+        )
       end
     end
 
@@ -75,16 +77,22 @@ describe BitmapImage do
         v_line = [
           OpenStruct.new(x: 2, y: 2),
           OpenStruct.new(x: 2, y: 3),
-          OpenStruct.new(x: 2, y: 4),
+          OpenStruct.new(x: 2, y: 4)
         ]
 
         image.draw_line(color: 'R', line: v_line)
-        expect(image.pixels[1][1]).to eq 'R'
-        expect(image.pixels[2][1]).to eq 'R'
-        expect(image.pixels[3][1]).to eq 'R'
+
+        expect(image.to_s).to eq <<~IMAGE
+          OOOO
+          OROO
+          OROO
+          OROO
+          OOOO
+        IMAGE
+          .strip
       end
 
-      it 'draws vertical line in x = 2 column trough rows 2 to 4 with colour B' do
+      it 'draws vertical line in 2 column trough rows 2 to 4 with colour B' do
         v_line = [
           OpenStruct.new(x: 2, y: 2),
           OpenStruct.new(x: 2, y: 3),
@@ -92,9 +100,15 @@ describe BitmapImage do
         ]
 
         image.draw_line(color: 'B', line: v_line)
-        expect(image.pixels[1][1]).to eq 'B'
-        expect(image.pixels[2][1]).to eq 'B'
-        expect(image.pixels[3][1]).to eq 'B'
+
+        expect(image.to_s).to eq <<~IMAGE
+          OOOO
+          OBOO
+          OBOO
+          OBOO
+          OOOO
+        IMAGE
+          .strip
       end
 
       it 'draws vertical line in x = 3 column trough rows 2 to 4 with colour B' do
