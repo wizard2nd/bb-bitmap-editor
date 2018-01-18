@@ -120,9 +120,15 @@ describe BitmapImage do
       ]
 
       image.draw_line(color: 'B', line: v_line)
-      expect(image.pixels[1][2]).to eq 'B'
-      expect(image.pixels[2][2]).to eq 'B'
-      expect(image.pixels[3][2]).to eq 'B'
+
+      expect(image.to_s).to eq <<~IMAGE
+        OOOO
+        OOBO
+        OOBO
+        OOBO
+        OOOO
+      IMAGE
+        .strip
     end
 
     it 'draws vertical line in x = 3 column trough rows 1 to 3 with colour B' do
@@ -133,9 +139,15 @@ describe BitmapImage do
       ]
 
       image.draw_line(color: 'B', line: v_line)
-      expect(image.pixels[0][2]).to eq 'B'
-      expect(image.pixels[1][2]).to eq 'B'
-      expect(image.pixels[2][2]).to eq 'B'
+
+      expect(image.to_s).to eq <<~IMAGE
+        OOBO
+        OOBO
+        OOBO
+        OOOO
+        OOOO
+      IMAGE
+        .strip
     end
 
     it 'draws horizontal line on y = 2 row trough 2 to 4 y columns with color G' do
@@ -146,9 +158,15 @@ describe BitmapImage do
       ]
 
       image.draw_line(color: 'G', line: h_line)
-      expect(image.pixels[1][1]).to eq 'G'
-      expect(image.pixels[1][2]).to eq 'G'
-      expect(image.pixels[1][3]).to eq 'G'
+
+      expect(image.to_s).to eq <<~IMAGE
+        OOOO
+        OGGG
+        OOOO
+        OOOO
+        OOOO
+      IMAGE
+        .strip
     end
 
     it 'draws horizontal line on y = 3 row trough 2 to 4 y columns with color G' do
@@ -159,9 +177,15 @@ describe BitmapImage do
       ]
 
       image.draw_line(color: 'G', line: h_line)
-      expect(image.pixels[2][1]).to eq 'G'
-      expect(image.pixels[2][2]).to eq 'G'
-      expect(image.pixels[2][3]).to eq 'G'
+
+      expect(image.to_s).to eq <<~IMAGE
+        OOOO
+        OOOO
+        OGGG
+        OOOO
+        OOOO
+      IMAGE
+        .strip
     end
 
     it 'draws horizontal line on y = 3 row trough 1 to 4 y columns with color B' do
@@ -173,20 +197,27 @@ describe BitmapImage do
       ]
 
       image.draw_line(color: 'B', line: h_line)
-      expect(image.pixels[0][0..-1]).to all eq 'O'
-      expect(image.pixels[1][0..-1]).to all eq 'O'
-      expect(image.pixels[2][0..-1]).to all eq 'B'
-      expect(image.pixels[3][0..-1]).to all eq 'O'
+
+      expect(image.to_s).to eq <<~IMAGE
+        OOOO
+        OOOO
+        BBBB
+        OOOO
+        OOOO
+      IMAGE
+        .strip
     end
   end
 
   describe '#to_s' do
     before { image.create(width: 2, height: 2) }
 
-    let(:expected_string) { "OO\nOO" }
-
     it 'converts image to string' do
-      expect(image.to_s).to eq expected_string
+      expect(image.to_s).to eq <<~IMAGE
+        OO
+        OO
+      IMAGE
+        .strip
     end
   end
 end
