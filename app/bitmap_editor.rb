@@ -13,8 +13,7 @@ class BitmapEditor
     when 'C'
       @image.clear
     when 'L'
-      point = { x: args[1].to_i.abs, y: args[2].to_i.abs }
-      point = OpenStruct.new(point)
+      point = OpenStruct.new({ x: args[1].to_i.abs, y: args[2].to_i.abs })
       @image.color_pixel(point: point, color: args[3])
     when 'V'
       v_line = (args[2]..args[3]).each_with_object([]) do |y, line|
