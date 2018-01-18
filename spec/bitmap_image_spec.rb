@@ -43,11 +43,16 @@ describe BitmapImage do
       expect(image.to_s).to eq "OOOO\nGOOO\nOOOO"
     end
 
-    it 'paint pixel on (2,3) with color B' do
+    it 'paint pixel on [2,3] with color B' do
       point = OpenStruct.new(x: 2, y: 3)
       image.color_pixel(color: 'B', point: point)
 
-      expect(image.to_s).to eq "OOOO\nOOOO\nOBOO"
+      expect(image.to_s).to eq <<~IMAGE
+        OBOO
+        OOOO
+        OOOO
+      IMAGE
+        .strip
     end
   end
 
@@ -55,7 +60,6 @@ describe BitmapImage do
     let(:width) { 2 }
     let(:height) { 2 }
 
-    let(:clear_image) { [ %w(O O), %w(O O) ] }
     before do
       image.create(width: width, height: height)
       point = OpenStruct.new(x: 1, y: 2)
@@ -64,7 +68,7 @@ describe BitmapImage do
 
     it 'clears the image by setting white background' do
       expect { image.clear }.to(
-        change { image.to_s }.from("OO\nRO").to "OO\nOO"
+        change { image.to_s }.from("RO\nOO").to "OO\nOO"
       )
     end
   end
@@ -141,29 +145,29 @@ describe BitmapImage do
       image.draw_line(color: 'B', line: v_line)
 
       expect(image.to_s).to eq <<~IMAGE
-        OOBO
-        OOBO
-        OOBO
         OOOO
         OOOO
+        OOBO
+        OOBO
+        OOBO
       IMAGE
         .strip
     end
 
     it 'draws horizontal line on y = 2 row trough 2 to 4 y columns with color G' do
       h_line = [
-          OpenStruct.new(x: 2, y: 2),
-          OpenStruct.new(x: 3, y: 2),
-          OpenStruct.new(x: 4, y: 2),
+        OpenStruct.new(x: 2, y: 2),
+        OpenStruct.new(x: 3, y: 2),
+        OpenStruct.new(x: 4, y: 2)
       ]
 
       image.draw_line(color: 'G', line: h_line)
 
       expect(image.to_s).to eq <<~IMAGE
         OOOO
+        OOOO
+        OOOO
         OGGG
-        OOOO
-        OOOO
         OOOO
       IMAGE
         .strip
@@ -171,9 +175,9 @@ describe BitmapImage do
 
     it 'draws horizontal line on y = 3 row trough 2 to 4 y columns with color G' do
       h_line = [
-          OpenStruct.new(x: 2, y: 3),
-          OpenStruct.new(x: 3, y: 3),
-          OpenStruct.new(x: 4, y: 3)
+        OpenStruct.new(x: 2, y: 3),
+        OpenStruct.new(x: 3, y: 3),
+        OpenStruct.new(x: 4, y: 3)
       ]
 
       image.draw_line(color: 'G', line: h_line)
@@ -190,10 +194,10 @@ describe BitmapImage do
 
     it 'draws horizontal line on y = 3 row trough 1 to 4 y columns with color B' do
       h_line = [
-          OpenStruct.new(x: 1, y: 3),
-          OpenStruct.new(x: 2, y: 3),
-          OpenStruct.new(x: 3, y: 3),
-          OpenStruct.new(x: 4, y: 3)
+        OpenStruct.new(x: 1, y: 3),
+        OpenStruct.new(x: 2, y: 3),
+        OpenStruct.new(x: 3, y: 3),
+        OpenStruct.new(x: 4, y: 3)
       ]
 
       image.draw_line(color: 'B', line: h_line)

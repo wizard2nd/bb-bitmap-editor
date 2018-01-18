@@ -20,7 +20,7 @@ class BitmapImage
   end
 
   def color_pixel(color:, point:)
-    pixels[point.y - 1][point.x - 1] = color
+    pixels[pixels.length - point.y][point.x - 1] = color
   end
 
   def clear
