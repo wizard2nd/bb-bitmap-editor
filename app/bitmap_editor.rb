@@ -1,6 +1,7 @@
 class BitmapEditor
-  def initialize(image)
+  def initialize(image, display = nil)
     @image = image
+    @display = display
   end
 
   def run(command)
@@ -26,7 +27,7 @@ class BitmapEditor
       end
       @image.draw_line(line: h_line, color: args[4])
     when 'S'
-      puts @image.to_s
+      @display.show(@image)
     end
   end
 end

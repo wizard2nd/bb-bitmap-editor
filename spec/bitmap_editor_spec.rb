@@ -159,16 +159,13 @@ describe BitmapEditor do
 
   describe 'S' do
     let(:command) { 'S' }
-
-    it 'Prints out content of image' do
-      expect(image).to receive(:to_s)
-
-      run_command
-    end
+    let(:display) { double :view }
+    let(:bitmap_editor) { BitmapEditor.new(image, display) }
 
     it 'Prints image content to std output' do
-      expect(image).to receive(:to_s).and_return('00')
-      expect{ run_command }.to output("00\n").to_stdout
+      expect(display).to receive(:show).with(image)
+
+      run_command
     end
   end
 end
